@@ -1,0 +1,18 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Tue, 16 Jun 2020 12:39:13 +0200
+Subject: Use the packaged MathJax
+
+---
+ doc/source/conf.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index e5a39b9..1aec62b 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -238,3 +238,5 @@ plot_html_show_source_link = False
+ # Intersphinx to get Numpy and other targets
+ intersphinx_mapping = {
+     'numpy': ('https://docs.scipy.org/doc/numpy/', None)}
++
++mathjax_path = 'file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'

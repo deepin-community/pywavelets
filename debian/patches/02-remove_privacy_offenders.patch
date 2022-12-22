@@ -1,0 +1,78 @@
+From 2d454990fee695de918ab6e493b7153a2b58b8c7 Mon Sep 17 00:00:00 2001
+From: Daniele Tricoli <eriol@mornie.org>
+Date: Mon, 12 Oct 2015 02:20:58 +0200
+Subject: Remove Google Analitics, Travis, and Joss build badges.
+
+Forwarded: not-needed
+Last-Update: 2015-09-30
+
+Patch-Name: 02-remove_privacy_offenders.patch
+---
+ doc/source/_templates/page.html | 13 -------------
+ doc/source/dev/testing.rst      |  7 -------
+ doc/source/index.rst            |  8 +-------
+ 3 files changed, 1 insertion(+), 27 deletions(-)
+
+diff --git a/doc/source/_templates/page.html b/doc/source/_templates/page.html
+index 8a049aa..37c5625 100644
+--- a/doc/source/_templates/page.html
++++ b/doc/source/_templates/page.html
+@@ -21,19 +21,6 @@
+         });
+     })(jQuery);
+ </script>
+-<script type="text/javascript">
+-    var _gaq = _gaq || [];
+-    _gaq.push(['_setAccount', 'UA-3396395-3']);
+-    _gaq.push(['_trackPageview']);
+-    (function () {
+-        var ga = document.createElement('script');
+-        ga.type = 'text/javascript';
+-        ga.async = true;
+-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+-        var s = document.getElementsByTagName('script')[0];
+-        s.parentNode.insertBefore(ga, s);
+-    })();
+-</script>
+ {% endblock %}
+ 
+ {# Remove version number from the top and bottom path bars #}
+diff --git a/doc/source/dev/testing.rst b/doc/source/dev/testing.rst
+index 12b0906..79ad2cf 100644
+--- a/doc/source/dev/testing.rst
++++ b/doc/source/dev/testing.rst
+@@ -9,13 +9,6 @@ Continous integration with Travis-CI
+ The project is using `Travis-CI <https://travis-ci.org/PyWavelets/pywt>`_ service
+ for continuous integration and testing.
+ 
+-Current build status is:
+-
+-.. image::
+-    https://secure.travis-ci.org/PyWavelets/pywt.png?branch=master
+-    :alt: Build Status
+-    :target: https://secure.travis-ci.org/PyWavelets/pywt
+-
+ If you are submitting a patch or pull request please make sure it
+ does not break the build.
+ 
+diff --git a/doc/source/index.rst b/doc/source/index.rst
+index bced5c0..08e69fd 100644
+--- a/doc/source/index.rst
++++ b/doc/source/index.rst
+@@ -58,15 +58,9 @@ JOSS publication:
+   O'Leary (2019). PyWavelets: A Python package for wavelet analysis. Journal
+   of Open Source Software, 4(36), 1237, https://doi.org/10.21105/joss.01237.
+ 
+-.. image:: http://joss.theoj.org/papers/10.21105/joss.01237/status.svg
+-   :target: https://doi.org/10.21105/joss.01237
+-
+ Specific releases can also be cited via Zenodo. The DOI below will correspond
+ to the most recent release. DOIs for past versions can be found by following
+-the link in the badge below to Zenodo:
+-
+-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1407171.svg
+-   :target: https://doi.org/10.5281/zenodo.1407171
++the link to Zenodo: https://doi.org/10.5281/zenodo.1407171.
+ 
+ Contents
+ --------

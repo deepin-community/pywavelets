@@ -1,0 +1,4 @@
+01-get_version_from_source.patch
+02-remove_privacy_offenders.patch
+do_not_rewrite_git_revision_on_build.patch
+Use-the-packaged-MathJax.patch

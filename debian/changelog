@@ -1,0 +1,303 @@
+pywavelets (1.1.1-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Ole Streicher ]
+  * New upstream version 1.1.1. Closes: #962815
+  * Rediff patches. Remove patch that was applied upstream
+  * Add new build dependencies
+  * Remove non-existing files from docs install
+  * Push Standards-Version to 4.5.0. Change remaining URLs to https
+  * Update dh-compat to 12
+  * Use d/clean to remove extra files
+  * Add "Rules-Requires-Root: no" to d/control
+  * Replace dpkg-parsechangelog by SOURCE_DATE_EPOCH
+  * Use the packaged MathJax
+  * Add Suggests: python-pyqwt-doc to python3-pyqwt. Closes: #893107
+
+ -- Ole Streicher <olebole@debian.org>  Tue, 16 Jun 2020 11:19:53 +0200
+
+pywavelets (0.5.1-1.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Grab patch from Ubuntu and Balint Reczey to fix an aligment problem on
+    armhf (Closes: #917652)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 18 Dec 2019 15:36:45 +0100
+
+pywavelets (0.5.1-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop python2 support; Closes: #938301
+
+ -- Sandro Tosi <morph@debian.org>  Fri, 13 Dec 2019 13:37:57 -0500
+
+pywavelets (0.5.1-1.1) unstable; urgency=medium
+
+  [ Balint Reczey ]
+  * Non-maintainer upload.
+  * Fix clean target to allow dpkg-buildpackage -S succeed
+
+  [ Bhavani Shankar ]
+  * Fix dh_fixperms override to work properly with
+    architecture-independent-only builds. (Closes: #852303)
+
+ -- Balint Reczey <rbalint@ubuntu.com>  Mon, 27 Mar 2017 07:42:33 +0000
+
+pywavelets (0.5.1-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Daniele Tricoli ]
+  * New upstream release.
+  * debian/control
+    - Add python3-setuptools to Build-Depends.
+    - Add python-numpydoc to Build-Depends.
+    - Bump Standards-Version to 3.9.8 (no changes needed).
+  * debian/copyright
+    - Update copyright years.
+    - Align debian/copyright to new upstream source.
+  * debian/docs
+    - Rename README to README.rst.
+  * debian/examples
+    - Rename into python-pywt-doc.examples.
+  * debian/python-pywt-doc.examples
+    - Move examples to documentation package.
+  * debian/rules
+    - Copy tests to run them during build and then remove.
+    - Enable hardening build flags.
+    - Remove execution flag set on all files of orig tarball.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Fri, 23 Dec 2016 00:28:30 +0100
+
+pywavelets (0.3.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #796767).
+  * Switch packaging to pybuild.
+  * Build Python3 package.
+  * Build python-pywt-doc to ship documentation.
+  * debian/compat
+    - Bump debhelper compatibility level to 9.
+  * debian/control
+    - Bump debhelper B-D to (>= 9).
+    - Add dh-python, python{,3}-nose, python3-all-dev and python3-numpy to B-D.
+    - Add python3-pywt stanza.
+    - Add python-pywt-doc stanza.
+    - Bump Standards-Version to 3.9.6 (no changes needed).
+    - Bump X-Python-Version to >= 2.6.
+    - Add X-Python3-Version >= 3.3.
+    - Update Homepage field.
+    - Update Vcs fields for git migration.
+  * debian/copyright
+    - Update Upstream-Contact.
+    - Update copyright years.
+    - Add stanza for files inside util/appveyor.
+  * debian/docs
+    - Rename README.rts into README.
+  * debian/python-pywt-doc.docs
+    - Ship documentation created with Python Sphinx.
+  * debian/python-pywt-doc.doc-base
+    - Rename from debian/python-pywt.doc-base.
+  * debian/patches/01-get_version_from_source.patch
+    - Grab version from the source code instead of importing pywt to build
+      documentation at package build time.
+  * debian/patches/02-remove_privacy_offenders.patch
+    Remove Google Analitics and Travis build badge.
+  * debian/patches/do_not_rewrite_git_revision_on_build.patch
+    - Don't rewrite git revision during build.
+  * debian/rules
+    - Rewrite from scratch using pybuild.
+    - Make the build reproducible. Thanks to Juan Picca for report and patch
+      (Closes: #788594).
+  * debian/watch
+    - Use pypi.debian.net redirector.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Wed, 04 Nov 2015 21:31:39 +0100
+
+pywavelets (0.2.2-2) unstable; urgency=low
+
+  * Upload to unstable
+  * debian/rules
+    - Removed get-orig-source since not used anymore
+  * debian/watch
+    - Switched download URL to https
+
+ -- Daniele Tricoli <eriol@mornie.org>  Sat, 13 Jul 2013 23:42:44 +0200
+
+pywavelets (0.2.2-1) experimental; urgency=low
+
+  * New upstream release
+  * Removed upstream patches since they are included:
+    - 01_fix-cython-0-14-compiling.patch
+    - 02_format-float-array-in-doctests.patch
+    - 03_fix-help.patch
+  * debian/control
+    - Bumped Standards-Version to 3.9.4 (no changes needed)
+    - Bumped cython version to >= 0.16
+    - Fixed lintian vcs-field-not-canonical
+    - Removed Provides field for binary package python-pywt since
+      there aren't packages with version specific dependencies on
+      it
+  * debian/copyright
+    - Updated copyright years
+    - Updated upstream email address
+  * debian/docs
+    - Renamed README.txt to README.rst to reflect upstream change
+  * debian/watch
+    - Updated to reflect extension change made by upstream
+    - Removed debian uupdate action
+
+ -- Daniele Tricoli <eriol@mornie.org>  Sat, 13 Apr 2013 05:07:00 +0200
+
+pywavelets (0.2.0-5) unstable; urgency=low
+
+  * debian/patches/02_skip-wavelet-filters-coefficients-doctest.patches
+    - Removed because exceed by 02_format-float-array-in-doctests.patch
+  * debian/patches/02_format-float-array-in-doctests.patch
+    - Added upstream patch to fix representation float issues in
+      doctests accross Python versions
+  * debian/patches/03_fix-help.patch
+    - Added upstream patch to fix python interactive built-in help
+      system (Closes: #595980)
+  * debian/rules
+    - Enabled hardening flags
+
+ -- Daniele Tricoli <eriol@mornie.org>  Tue, 22 May 2012 05:35:15 +0200
+
+pywavelets (0.2.0-4) unstable; urgency=low
+
+  * debian/control
+    - Bumped Standards-Version to 3.9.3
+  * debian/copyright
+    - Fixed DEP5 lintian warnings
+    - Updated Format URI
+    - Updated copyright years
+  * debian/preinst
+    - Removed because no more needed after Squeeze release
+  * debian/patches/01_fix-cython-0-14-compiling.patch
+    - Made DEP3 compliant
+  * debian/patches/02_skip-wavelet-filters-coefficients-doctest.patch
+    - Skip wavelet filters coefficients doctest because it fails only
+      in Python 2.7 due Float repr improvements backported from 3.x
+  * debian/rules
+    - Enabled tests at build time
+
+ -- Daniele Tricoli <eriol@mornie.org>  Tue, 13 Mar 2012 03:50:55 +0100
+
+pywavelets (0.2.0-3) unstable; urgency=low
+
+  * debian/control
+    - Bumped python-sphinx Build-Depends to be able to use dh_sphinxdoc and
+      added ${sphinxdoc:Depends} dependency
+    - Removed libjs-jquery from Suggests field because dh_sphinxdoc will handle
+      generation of jquery dependency
+  * debian/copyright
+     - Updated to DEP5 Format r174
+  * debian/python-pywt.doc-base
+    - Registered documentation provided by python-pywt using doc-base
+  * debian/rules
+    - Added build-arch and build-indep targets
+    - Used dh_sphinxdoc
+    - Removed dh_link symlink of jquery.js to libjs-jquery
+    - Don't compress Sphinx _sources
+
+ -- Daniele Tricoli <eriol@mornie.org>  Thu, 25 Aug 2011 02:24:29 +0200
+
+pywavelets (0.2.0-2) unstable; urgency=low
+
+  * debian/control
+    - Removed Piotr and added myself to Uploaders (Closes: #579114)
+    - Bumped Standards-Version to 3.9.2 (no changes needed)
+  * debian/patches/01_fix-cython-0-14-compiling.patch
+    - Added upstream patch (Mercurial rev 784802d4118c) to compile
+      using Cython 0.14
+  * debian/rules
+    - Don't compress objects.inv. Thanks to Michael Fladischer for the report.
+      (Closes: #608766)
+  * debian/source/format
+    - Switched to dpkg-source 3.0 (quilt) format
+  * debian/{control, rules}
+    - Switched to dh_python2.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Tue, 12 Apr 2011 02:55:04 +0200
+
+pywavelets (0.2.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Rebuild documentation at build time
+    - python-sphinx added to build dependencies
+  * Standards-version bumped to 3.8.4 (no changes needed)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sat, 20 Mar 2010 21:05:17 +0100
+
+pywavelets (0.1.7~svn139-1) unstable; urgency=low
+
+  [ Sandro Tosi ]
+  * debian/control
+    - Switch Vcs-Browser field to viewsvn
+    - removed Ondrej from Uploaders: thanks for your work!
+
+  [ Piotr Ożarowski ]
+  * New upstream snapshot (closes: #510922, #510920)
+  * Add get-orig-source rule
+  * Use setup.py to build the package - python2.5 will create .egg-info during
+    the build
+  * Cython added to Build-Depends
+  * Convert from python-central to python-support
+  * Add libjs-jquery to Suggests (for new docs)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Tue, 17 Nov 2009 21:44:19 +0100
+
+pywavelets (0.1.7~svn97-1) unstable; urgency=medium
+
+  [ Piotr Ożarowski ]
+  * New upstream snapshot (LP: #186421)
+    + 01_not_a_script patch removed (no longer needed)
+  * Standards-version bumped to 3.8.0
+    + Homepage field added
+  * Python version stripped from Egg name by pycentral (required version
+    bumped to 0.6.1)
+  * Rename XS-Vcs-* fields to Vcs-* (dpkg supports them now)
+  * python-wavelets dummy package removed (python-pywt is already in testing
+    and Etch doesn't have it)
+  * Change license of my packaging efforts to BSD to match upstream
+  * XS-DM-Upload-Allowed: yes field added
+
+  [ Ondrej Certik ]
+  * Added myself to uploaders
+  * lintian warning fix: python -> Python
+
+ -- Piotr Ożarowski <piotr@debian.org>  Wed, 09 Jul 2008 22:13:00 +0200
+
+pywavelets (0.1.6-3) unstable; urgency=low
+
+  * Fix debian/rules to use new package name
+  * Add python-wavelets transitional dummy package to make the upgrade process
+    smooth
+
+ -- Piotr Ożarowski <piotr@debian.org>  Wed, 19 Sep 2007 20:53:24 +0200
+
+pywavelets (0.1.6-2) unstable; urgency=low
+
+  * Rename binary package to python-pywt
+    (to conform to the Debian Python Policy)
+  * find (see clean rule) works correctly in every build now (closes: #442715)
+  * Rebuild to add Python 2.5 extension
+  * Changed my address to piotr@debian.org
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 17 Sep 2007 22:27:33 +0200
+
+pywavelets (0.1.6-1) unstable; urgency=low
+
+  * Initial release (closes: #406557)
+
+ -- Piotr Ozarowski <ozarow@gmail.com>  Thu, 11 Jan 2007 22:43:38 +0100

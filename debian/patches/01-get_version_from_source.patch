@@ -1,0 +1,38 @@
+From 5ca9e1f83bfc2c9907acfc06c96628c33594130e Mon Sep 17 00:00:00 2001
+From: Daniele Tricoli <eriol@mornie.org>
+Date: Mon, 12 Oct 2015 02:20:57 +0200
+Subject: Grab version from the source code instead of importing pywt to
+
+ build documentation at package build time.
+Forwarded: not-needed
+Last-Update: 2015-09-13
+
+Patch-Name: 01-get_version_from_source.patch
+---
+ doc/source/conf.py | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index b830351..e5a39b9 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -61,9 +61,16 @@ copyright = '2006-%s, The PyWavelets Developers' % datetime.date.today().year
+ 
+ # The default replacements for |version| and |release|, also used in various
+ # other places throughout the built documents.
+-import pywt
+-version = re.sub(r'\.dev0+.*$', r'.dev', pywt.__version__)
+-release = pywt.__version__
++
++# On Debian we want to build docs at package build time, when pywt is not
++# installed.
++import os
++base_path = os.path.dirname(__file__)
++fp = open(os.path.abspath(os.path.join(base_path, '..', '..', 'pywt', 'version.py')))
++VERSION = re.compile(r".*full_version = '(.*?)'",
++                     re.S).match(fp.read()).group(1)
++version = re.sub(r'\.dev0+.*$', r'.dev', VERSION)
++release = VERSION
+ 
+ print("PyWavelets (VERSION %s)" % (version,))
+ 

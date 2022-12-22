@@ -1,0 +1,10 @@
+Document: python-pywt-doc
+Title: PyWavelets Documentation
+Author: Filip Wasilewski
+Section: Programming/Python
+Abstract: PyWavelets implements the discrete wavelet transform (DWT) popular in
+ numerical harmonic analysis for numerous families of wavelets.
+
+Format: html
+Index: /usr/share/doc/python-pywt-doc/html/index.html
+Files: /usr/share/doc/python-pywt-doc/html/*.html

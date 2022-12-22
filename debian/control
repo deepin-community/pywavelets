@@ -1,0 +1,50 @@
+Source: pywavelets
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Daniele Tricoli <eriol@mornie.org>
+Section: python
+Priority: optional
+Build-Depends:
+ cython3 (>=0.16),
+ debhelper-compat (= 12),
+ dh-python,
+ python3-matplotlib,
+ python3-numpydoc,
+ python3-sphinx (>= 1.0.7+dfsg),
+ python3-all-dev,
+ python3-nose,
+ python3-numpy,
+ python3-pytest,
+ python3-setuptools
+Standards-Version: 4.5.0
+Homepage: https://github.com/PyWavelets/pywt
+Vcs-Git: https://salsa.debian.org/python-team/modules/pywavelets.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/pywavelets
+Rules-Requires-Root: no
+
+Package: python3-pywt
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ ${shlibs:Depends},
+ python3-numpy
+Suggests: python-pywt-doc
+Description: Python3 extension implementing of wavelet transformations
+ PyWavelets implements the discrete wavelet transform (DWT) popular in
+ numerical harmonic analysis for numerous families of wavelets, including
+ Haar, Daubechies, Symlet, Coiflet, biorthogonal wavelets in one and two
+ dimensions.
+ .
+ This package contains the Python 3 version of the library.
+
+Package: python-pywt-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}, libjs-mathjax
+Description: Python extension implementing of wavelet transformations (Documentation)
+ PyWavelets implements the discrete wavelet transform (DWT) popular in
+ numerical harmonic analysis for numerous families of wavelets, including
+ Haar, Daubechies, Symlet, Coiflet, biorthogonal wavelets in one and two
+ dimensions.
+ .
+ This package contains documentation and examples.

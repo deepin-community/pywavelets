@@ -1,0 +1,5 @@
+pywt/_extensions/_pywt.c
+pywt/_extensions/_dwt.c
+pywt/_extensions/_pywt.h
+pywt/_extensions/_swt.c
+pywt/_extensions/_cwt.c

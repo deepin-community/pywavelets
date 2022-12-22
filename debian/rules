@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all,-pie
+export PYBUILD_AFTER_TEST=rm -rf {destdir}/usr/lib/python{version}/dist-packages/pywt/tests
+export PYBUILD_BEFORE_TEST=cp -r {dir}/pywt/tests {destdir}/usr/lib/python{version}/dist-packages/pywt
+export PYBUILD_NAME=pywt
+export PYTHONWARNINGS=d
+export PYBUILD_CLEAN_ARGS = --force
+
+BUILD_DATE  = $(shell LC_ALL=C date -u "+%B %d, %Y" -d "$(SOURCE_DATE_EPOCH)")
+SPHINXOPTS := -D html_last_updated_fmt="$(BUILD_DATE)"
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+
+override_dh_auto_test:
+
+override_dh_auto_build:
+	dh_auto_build
+	PYTHONPATH=. http_proxy='127.0.0.1:9' python3 -m sphinx $(SPHINXOPTS) -N -bhtml doc/source doc/build/html
+
+override_dh_auto_install:
+	dh_auto_install
+	# Unfortunately, we need to run tests after install because numpy does not
+	# let you run them from the source directory.
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	PYBUILD_SYSTEM=custom \
+	PYBUILD_TEST_ARGS="{interpreter} -c \"import sys ; sys.path.insert(0, '{destdir}/usr/lib/python{version}/dist-packages/') ; import pywt ; pywt.test(verbose=5)\"" dh_auto_test
+endif
+
+override_dh_fixperms_indep:
+	dh_fixperms
+	# Remove execution flag set by upstream for all files.
+	find debian/python*-pywt -type f -exec chmod -x {} \;
+
+override_dh_fixperms_arch:
+	# Remove execution flag set by upstream also on examples.
+	find debian/python-pywt-doc -type f -exec chmod -x {} \;
