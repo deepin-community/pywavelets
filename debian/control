@@ -1,24 +1,24 @@
 Source: pywavelets
-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
 Uploaders: Daniele Tricoli <eriol@mornie.org>
 Section: python
 Priority: optional
 Build-Depends:
- cython3 (>=0.16),
- debhelper-compat (= 12),
+ cython3,
+ debhelper-compat (= 13),
  dh-python,
  python3-matplotlib,
  python3-numpydoc,
- python3-sphinx (>= 1.0.7+dfsg),
+ python3-sphinx,
  python3-all-dev,
  python3-nose,
  python3-numpy,
  python3-pytest,
  python3-setuptools
-Standards-Version: 4.5.0
+Standards-Version: 4.6.1
 Homepage: https://github.com/PyWavelets/pywt
-Vcs-Git: https://salsa.debian.org/python-team/modules/pywavelets.git
-Vcs-Browser: https://salsa.debian.org/python-team/modules/pywavelets
+Vcs-Git: https://salsa.debian.org/python-team/packages/pywavelets.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pywavelets
 Rules-Requires-Root: no
 
 Package: python3-pywt
@@ -41,6 +41,7 @@ Package: python-pywt-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}, ${sphinxdoc:Depends}, libjs-mathjax
+Multi-Arch: foreign
 Description: Python extension implementing of wavelet transformations (Documentation)
  PyWavelets implements the discrete wavelet transform (DWT) popular in
  numerical harmonic analysis for numerous families of wavelets, including
