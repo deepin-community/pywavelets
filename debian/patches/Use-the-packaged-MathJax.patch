@@ -7,12 +7,12 @@ Subject: Use the packaged MathJax
  1 file changed, 2 insertions(+)
 
 diff --git a/doc/source/conf.py b/doc/source/conf.py
-index e5a39b9..1aec62b 100644
+index 6107a71..ab9d94d 100644
 --- a/doc/source/conf.py
 +++ b/doc/source/conf.py
 @@ -238,3 +238,5 @@ plot_html_show_source_link = False
  # Intersphinx to get Numpy and other targets
  intersphinx_mapping = {
-     'numpy': ('https://docs.scipy.org/doc/numpy/', None)}
+     'numpy': ('https://numpy.org/devdocs', None)}
 +
 +mathjax_path = 'file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
