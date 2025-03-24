@@ -2,6 +2,7 @@ LICENSE
 LICENSES_bundled.txt
 MANIFEST.in
 README.rst
+pyproject.toml
 pytest.ini
 setup.py
 tox.ini
@@ -20,6 +21,8 @@ demo/dwt_swt_show_coeffs.py
 demo/fswavedecn.py
 demo/fswavedecn_mondrian.py
 demo/image_blender.py
+demo/mra2d.py
+demo/mra_vs_swt.py
 demo/plot_demo_signals.py
 demo/plot_wavelets.py
 demo/plot_wavelets_pyqtgraph.py
@@ -27,6 +30,7 @@ demo/swt2.py
 demo/swt_variance.py
 demo/waveinfo.py
 demo/wp_2d.py
+demo/wp_nd.py
 demo/wp_scalogram.py
 demo/wp_visualize_coeffs_distribution.py
 doc/Makefile
@@ -37,9 +41,18 @@ doc/paper/paper.md
 doc/release/0.3.0-notes.rst
 doc/release/0.4.0-notes.rst
 doc/release/0.5.0-notes.rst
+doc/release/0.5.1-notes.rst
+doc/release/0.5.2-notes.rst
 doc/release/1.0.0-notes.rst
+doc/release/1.0.1-notes.rst
+doc/release/1.0.2-notes.rst
+doc/release/1.0.3-notes.rst
 doc/release/1.1.0-notes.rst
 doc/release/1.1.1-notes.rst
+doc/release/1.2.0-notes.rst
+doc/release/1.3.0-notes.rst
+doc/release/1.4.0-notes.rst
+doc/release/1.4.1-notes.rst
 doc/source/common_refs.rst
 doc/source/conf.py
 doc/source/contributing.rst
@@ -48,9 +61,18 @@ doc/source/install.rst
 doc/source/release.0.3.0.rst
 doc/source/release.0.4.0.rst
 doc/source/release.0.5.0.rst
+doc/source/release.0.5.1.rst
+doc/source/release.0.5.2.rst
 doc/source/release.1.0.0.rst
+doc/source/release.1.0.1.rst
+doc/source/release.1.0.2.rst
+doc/source/release.1.0.3.rst
 doc/source/release.1.1.0.rst
 doc/source/release.1.1.1.rst
+doc/source/release.1.2.0.rst
+doc/source/release.1.3.0.rst
+doc/source/release.1.4.0.rst
+doc/source/release.1.4.1.rst
 doc/source/releasenotes.rst
 doc/source/substitutions.rst
 doc/source/_static/comments.png
@@ -85,6 +107,7 @@ doc/source/ref/dwt-discrete-wavelet-transform.rst
 doc/source/ref/idwt-inverse-discrete-wavelet-transform.rst
 doc/source/ref/index.rst
 doc/source/ref/iswt-inverse-stationary-wavelet-transform.rst
+doc/source/ref/mra.rst
 doc/source/ref/nd-dwt-and-idwt.rst
 doc/source/ref/other-functions.rst
 doc/source/ref/signal-extension-modes.rst
@@ -106,6 +129,7 @@ pywt/_cwt.py
 pywt/_doc_utils.py
 pywt/_dwt.py
 pywt/_functions.py
+pywt/_mra.py
 pywt/_multidim.py
 pywt/_multilevel.py
 pywt/_pytest.py
@@ -173,6 +197,7 @@ pywt/tests/test_functions.py
 pywt/tests/test_matlab_compatibility.py
 pywt/tests/test_matlab_compatibility_cwt.py
 pywt/tests/test_modes.py
+pywt/tests/test_mra.py
 pywt/tests/test_multidim.py
 pywt/tests/test_multilevel.py
 pywt/tests/test_perfect_reconstruction.py
@@ -181,6 +206,7 @@ pywt/tests/test_thresholding.py
 pywt/tests/test_wavelet.py
 pywt/tests/test_wp.py
 pywt/tests/test_wp2d.py
+pywt/tests/test_wpnd.py
 pywt/tests/data/cwt_matlabR2015b_result.npz
 pywt/tests/data/dwt_matlabR2012a_result.npz
 pywt/tests/data/generate_matlab_data.py
@@ -192,6 +218,5 @@ util/gh_lists.py
 util/refguide_check.py
 util/setenv_build32.bat
 util/setenv_build64.bat
-util/travis_osx_install.sh
 util/appveyor/build.cmd
 util/readthedocs/requirements.txt

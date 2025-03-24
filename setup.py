@@ -14,14 +14,11 @@ from setuptools import setup, Extension
 from setuptools.command.test import test as TestCommand
 
 MAJOR = 1
-MINOR = 1
+MINOR = 4
 MICRO = 1
 ISRELEASED = True
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
 
-# fail quicker on unsupported Python (prior to Cythonizing)
-if sys.version_info[:2] < (3, 5):
-    raise RuntimeError("Python version >= 3.5 required.")
 
 # Return the git revision as a string
 def git_version():
@@ -59,8 +56,11 @@ def get_version_info():
     elif os.path.exists('pywt/version.py'):
         # must be a source distribution, use existing version file
         # load it as a separate module to not load pywt/__init__.py
-        import imp
-        version = imp.load_source('pywt.version', 'pywt/version.py')
+        import types
+        from importlib.machinery import SourceFileLoader
+        loader = SourceFileLoader('pywt.version', 'pywt/version.py')
+        version = types.ModuleType(loader.name)
+        loader.exec_module(version)
         GIT_REVISION = version.git_revision
     else:
         GIT_REVISION = "Unknown"
@@ -223,7 +223,11 @@ class develop_build_clib(develop):
         self.reinitialize_command('build_ext', inplace=1)
         self.run_command('build_ext')
 
-        self.install_site_py()  # ensure that target dir is site-safe
+        try:
+            self.install_site_py()  # ensure that target dir is site-safe
+        except AttributeError:
+            # setuptools 0.49 removed install_site_py
+            pass
 
         if setuptools.bootstrap_install_from:
             self.easy_install(setuptools.bootstrap_install_from)
@@ -384,7 +388,7 @@ class PyTest(TestCommand):
 
 
 def setup_package():
-    # Rewrite the version file everytime
+    # Rewrite the version file every time
     write_version_py()
 
     metadata = dict(
@@ -419,12 +423,10 @@ def setup_package():
             "Programming Language :: C",
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: 3.5",
-            "Programming Language :: Python :: 3.6",
-            "Programming Language :: Python :: 3.7",
             "Programming Language :: Python :: 3.8",
-            "Programming Language :: Python :: 3 :: Only",
-            "Programming Language :: Python :: Implementation :: CPython",
+            "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
             "Topic :: Software Development :: Libraries :: Python Modules"
         ],
         platforms=["Windows", "Linux", "Solaris", "Mac OS-X", "Unix"],
@@ -438,9 +440,8 @@ def setup_package():
         cmdclass={'develop': develop_build_clib, 'test': PyTest},
         tests_require=['pytest'],
 
-        install_requires=["numpy>=1.13.3"],
-        setup_requires=["numpy>=1.13.3"],
-        python_requires=">=3.5",
+        install_requires=["numpy>=1.17.3"],
+        python_requires=">=3.8",
     )
 
     if "--force" in sys.argv:

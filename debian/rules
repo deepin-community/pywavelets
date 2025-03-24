@@ -9,7 +9,7 @@ export PYBUILD_NAME=pywt
 export PYTHONWARNINGS=d
 export PYBUILD_CLEAN_ARGS = --force
 
-BUILD_DATE  = $(shell LC_ALL=C date -u "+%B %d, %Y" -d "$(SOURCE_DATE_EPOCH)")
+BUILD_DATE  = $(shell LC_ALL=C date -u "+%B %d, %Y" -d "$(if $(SOURCE_DATE_EPOCH),@$(SOURCE_DATE_EPOCH))")
 SPHINXOPTS := -D html_last_updated_fmt="$(BUILD_DATE)"
 
 %:
@@ -31,11 +31,5 @@ ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
 	PYBUILD_TEST_ARGS="{interpreter} -c \"import sys ; sys.path.insert(0, '{destdir}/usr/lib/python{version}/dist-packages/') ; import pywt ; pywt.test(verbose=5)\"" dh_auto_test
 endif
 
-override_dh_fixperms_indep:
-	dh_fixperms
-	# Remove execution flag set by upstream for all files.
-	find debian/python*-pywt -type f -exec chmod -x {} \;
-
-override_dh_fixperms_arch:
-	# Remove execution flag set by upstream also on examples.
-	find debian/python-pywt-doc -type f -exec chmod -x {} \;
+execute_before_dh_python3:
+	dh_numpy3

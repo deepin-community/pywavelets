@@ -7,11 +7,11 @@ Build-Depends:
  cython3,
  debhelper-compat (= 13),
  dh-python,
+ dh-sequence-numpy3,
  python3-matplotlib,
  python3-numpydoc,
  python3-sphinx,
  python3-all-dev,
- python3-nose,
  python3-numpy,
  python3-pytest,
  python3-setuptools

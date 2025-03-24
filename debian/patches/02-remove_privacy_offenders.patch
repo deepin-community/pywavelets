@@ -1,4 +1,3 @@
-From 2d454990fee695de918ab6e493b7153a2b58b8c7 Mon Sep 17 00:00:00 2001
 From: Daniele Tricoli <eriol@mornie.org>
 Date: Mon, 12 Oct 2015 02:20:58 +0200
 Subject: Remove Google Analitics, Travis, and Joss build badges.
@@ -38,10 +37,10 @@ index 8a049aa..37c5625 100644
  
  {# Remove version number from the top and bottom path bars #}
 diff --git a/doc/source/dev/testing.rst b/doc/source/dev/testing.rst
-index 12b0906..79ad2cf 100644
+index e2a4a7d..a4ee836 100644
 --- a/doc/source/dev/testing.rst
 +++ b/doc/source/dev/testing.rst
-@@ -9,13 +9,6 @@ Continous integration with Travis-CI
+@@ -9,13 +9,6 @@ Continuous integration with Travis-CI
  The project is using `Travis-CI <https://travis-ci.org/PyWavelets/pywt>`_ service
  for continuous integration and testing.
  
